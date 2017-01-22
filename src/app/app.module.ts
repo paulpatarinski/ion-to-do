@@ -2,14 +2,12 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {toDoNotCompletePipe} from 'utils/pipes/todo-not-complete-pipe';
 import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    toDoNotCompletePipe
+    HomePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)

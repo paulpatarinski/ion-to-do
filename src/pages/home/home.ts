@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, reorderArray } from 'ionic-angular';
 import { ItemSliding } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  todos: Array<{ id: number, text: string, complete: boolean }>;
+  todos: Array<{ id: number, text: string }>;
   todoText;
   _storage;
   _todosKey = 'todos';
@@ -33,21 +33,24 @@ export class HomePage {
 
     if (percent < -1.8) {
       slidingItem.close();
-      this.markToDoComplete(selectedToDo);
+      this.removeCompletedToDo(selectedToDo);
     }
   }
 
-  markToDoComplete(selectedToDo) {
-    selectedToDo.complete = true;
-    this.saveToDos();
+  removeCompletedToDo(selectedToDo) {
+    var selectedToDoIndex = this.todos.indexOf(selectedToDo);
+
+    if (selectedToDoIndex != -1) {
+      this.todos.splice(selectedToDoIndex, 1);
+      this.saveToDos();
+    }
   }
 
   addToDo(newToDo) {
     if (newToDo) {
       this.todos.push({
         id: this.todos.length + 1,
-        text: newToDo,
-        complete: false
+        text: newToDo
       });
 
       this.saveToDos();
@@ -57,5 +60,10 @@ export class HomePage {
 
   saveToDos() {
     this._storage.set(this._todosKey, this.todos);
+  }
+
+  reorderToDos(indexes) {
+    this.todos = reorderArray(this.todos, indexes);
+    this.saveToDos();
   }
 }

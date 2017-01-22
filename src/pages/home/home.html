@@ -19,8 +19,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let todo of todos | toDoNotCompletePipe" (ionDrag)="itemDragged(slidingItem, todo)">
+  <ion-list reorder="true" (ionItemReorder)="reorderToDos($event)">
+    <ion-item-sliding #slidingItem *ngFor="let todo of todos" (ionDrag)="itemDragged(slidingItem, todo)">
       <ion-item>
         <h2>{{todo.text}}</h2>
       </ion-item>
