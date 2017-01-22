@@ -4,7 +4,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -15,7 +14,9 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      // StatusBar.styleDefault();
+      StatusBar.overlaysWebView(false)
+      StatusBar.backgroundColorByHexString("#303F9F");
       Splashscreen.hide();
     });
   }
