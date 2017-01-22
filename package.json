@@ -8,7 +8,8 @@
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve --lab",
-    "ionic:deploy" : "ionic run android"
+    "ionic:deploy" : "ionic run android",
+    "ionic:resources" : "ionic resources"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js"
