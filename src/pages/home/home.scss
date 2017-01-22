@@ -1,3 +1,23 @@
-page-home {
+#todo-content{
+    .text-input-clear-icon 
+    {
+        display: block;
+    }
 
+     .todo-input
+     {
+        color: white;
+        .text-input::-moz-placeholder {
+        color: white;
+        }
+
+        .text-input:-ms-input-placeholder {
+        color: white;
+        }
+
+        .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: white;
+        }
+    }
 }
