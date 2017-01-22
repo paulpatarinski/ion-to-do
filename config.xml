@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.simpleprodinc.simpletodo" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Simple To-Do</name>
+  <name>To-Do</name>
   <description>Simple To-Do app.</description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
   <content src="index.html"/>
@@ -76,7 +76,6 @@
   <preference name="SplashScreenDelay" value="2000"/>
   <preference name="FadeSplashScreenDuration" value="1000"/>
   <preference name="AutoHideSplashScreen" value="false"/>
-
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
