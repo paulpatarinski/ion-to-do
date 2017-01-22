@@ -14,3 +14,108 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+#todo-content{
+    //icons
+    .icon-large { 
+        &.icon-ios{
+            font-size: 35px;
+        }
+
+        &.icon-md{
+            margin-top: 8px;
+            font-size: 25px;
+        }
+    }
+    .icon-xlarge { 
+        &.icon-ios{
+            margin-top : -6px;
+            font-size: 55px;
+        }
+
+        &.icon-md{
+            margin-top: 5px;
+            font-size: 30px;
+        }
+    }
+
+    //content
+    .scroll-content{
+        padding : 0px;
+    }
+
+    //items
+    .item-md, .item-ios {
+        padding-left: 0px;
+
+        .item-inner{
+            padding-left : 8px;
+            border : none;
+            box-shadow: none;
+        }
+    }
+
+    //grid
+    ion-row, ion-col{
+        padding : 0;
+    }
+
+    .todo-input{
+        color: white;
+        .text-input::-moz-placeholder {
+        color: white;
+        }
+
+        .text-input:-ms-input-placeholder {
+        color: white;
+        }
+
+        .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: white;
+        }
+    }
+
+    //input
+    .text-input-md
+    {
+        margin-left : 0px;
+    }
+
+    .input-md 
+    {
+        .text-input-clear-icon
+        {
+            background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='white'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>");
+        }
+    }
+
+    .input-ios {
+        .text-input-clear-icon
+        {
+            background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><path%20fill='white'%20d='M403.1,108.9c-81.2-81.2-212.9-81.2-294.2,0s-81.2,212.9,0,294.2c81.2,81.2,212.9,81.2,294.2,0S484.3,190.1,403.1,108.9z%20M352,340.2L340.2,352l-84.4-84.2l-84,83.8L160,339.8l84-83.8l-84-83.8l11.8-11.8l84,83.8l84.4-84.2l11.8,11.8L267.6,256L352,340.2z'/></svg>");
+        }    
+    }
+
+    //grid
+    @for $i from 1 through 100
+    {
+        ion-col {
+          &[width-#{$i}] {
+            flex: 0 0 $i + %;
+            max-width: $i + %;
+          }
+        }
+
+        ion-col[offset-#{$i}] 
+        {
+            margin-left: $i + %;
+        }
+    }
+
+    //header
+    .toolbar-md, .toolbar-ios
+    {
+        padding: 0px;
+    }
+}

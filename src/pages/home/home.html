@@ -1,14 +1,34 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Simple To-Do
     </ion-title>
   </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-row>
+      <ion-col width-5 offset-3>
+        <ion-icon name="add" class="icon-large" color="light"></ion-icon>
+      </ion-col>
+      <ion-col offset-3>
+        <ion-item class="todo-input" color="secondary">
+      <ion-input type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput></ion-input>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let todo of todos | toDoNotCompletePipe" (ionDrag)="itemDragged(slidingItem, todo)">
+      <ion-item>
+        <h2>{{todo.text}}</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button>
+          <ion-icon class="icon-xlarge" name="checkmark"></ion-icon>
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
