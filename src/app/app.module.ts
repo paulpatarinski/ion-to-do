@@ -3,11 +3,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Storage } from '@ionic/storage';
+import { OnFocusDirective } from '../components/input-clear';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    OnFocusDirective
   ],
   imports: [
     IonicModule.forRoot(MyApp)

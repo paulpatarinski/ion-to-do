@@ -11,7 +11,7 @@
       </ion-col>
       <ion-col>
         <ion-item class="todo-input" color="primary">
-          <ion-input type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput></ion-input>
+          <ion-input type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput onFocus></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
