@@ -19,7 +19,10 @@ export class HomePage {
     this._storage.ready().then(() => {
       this._storage.get(this._todosKey).then((todos) => {
         if (!todos) {
-          todos = [];
+          todos = [{
+            id : 1,
+            text : "Swipe me to the right to complete..."
+          }];
           this._storage.set(this._todosKey, todos);
         }
 
