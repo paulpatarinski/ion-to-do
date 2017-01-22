@@ -9,7 +9,11 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve --lab",
     "ionic:deploy" : "ionic run android",
-    "ionic:resources" : "ionic resources"
+    "ionic:resources" : "ionic resources",
+    "publish:apk" : "npm run cordova:release:build && npm run publish:sign:apk && npm run publish:zipalign",
+    "cordova:release:build" : "cordova build --release android",
+    "publish:sign:apk" : "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/paulpatarinski/Desktop/privateKey/my-release-key.keystore /Users/paulpatarinski/WIP/Personal/simpleToDo/platforms/android/build/outputs/apk/android-release-unsigned.apk -storepass password alias_name",
+    "publish:zipalign" : "zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk apps/todo.apk"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js"
