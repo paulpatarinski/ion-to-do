@@ -1,0 +1,20 @@
+ #todo-content{
+    ion-row, ion-col{
+        padding : 0;
+    }
+
+    @for $i from 1 through 100
+    {
+        ion-col {
+          &[width-#{$i}] {
+            flex: 0 0 $i + %;
+            max-width: $i + %;
+          }
+        }
+
+        ion-col[offset-#{$i}] 
+        {
+            margin-left: $i + %;
+        }
+    }
+ }

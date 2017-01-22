@@ -1,0 +1,25 @@
+#todo-content{
+    //icons
+    .icon-large { 
+        &.icon-ios{
+            margin-top: 2px;
+            font-size: 35px;
+        }
+
+        &.icon-md{
+            margin-top: 8px;
+            font-size: 25px;
+        }
+    }
+    .icon-xlarge { 
+        &.icon-ios{
+            margin-top : -6px;
+            font-size: 55px;
+        }
+
+        &.icon-md{
+            margin-top: 5px;
+            font-size: 30px;
+        }
+    }
+}
