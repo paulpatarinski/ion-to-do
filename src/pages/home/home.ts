@@ -18,7 +18,7 @@ export class HomePage {
 
     this._storage.ready().then(() => {
       this._storage.get(this._todosKey).then((todos) => {
-        if(!todos){
+        if (!todos) {
           todos = [];
           this._storage.set(this._todosKey, todos);
         }
@@ -37,23 +37,25 @@ export class HomePage {
     }
   }
 
-  markToDoComplete(selectedToDo){
-      selectedToDo.complete = true;
-      this.saveToDos();
+  markToDoComplete(selectedToDo) {
+    selectedToDo.complete = true;
+    this.saveToDos();
   }
 
   addToDo(newToDo) {
-    this.todos.push({
-      id: this.todos.length + 1,
-      text: newToDo,
-      complete: false
-    });
+    if (newToDo) {
+      this.todos.push({
+        id: this.todos.length + 1,
+        text: newToDo,
+        complete: false
+      });
 
-    this.saveToDos();
-    this.todoText = "";
+      this.saveToDos();
+      this.todoText = "";
+    }
   }
 
-  saveToDos(){
+  saveToDos() {
     this._storage.set(this._todosKey, this.todos);
   }
 }
