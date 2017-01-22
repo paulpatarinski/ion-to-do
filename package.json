@@ -18,7 +18,8 @@
     "install:apk" : "adb install apps/todo.apk"
   },
   "config": {
-    "ionic_webpack": "./scripts/config/webpack.config.js"
+    "ionic_webpack": "./scripts/config/webpack.config.js",
+    "ionic_sass" : "./scripts/config/sass.config.js"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
