@@ -48,7 +48,7 @@ export class HomePage {
 
   addToDo(newToDo) {
     if (newToDo) {
-      this.todos.push({
+      this.todos.unshift({
         id: this.todos.length + 1,
         text: newToDo
       });
