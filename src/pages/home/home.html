@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       To-Do
     </ion-title>
   </ion-navbar>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="primary">
     <ion-row>
       <ion-col width-5 offset-3>
         <ion-icon name="add" class="icon-large" color="light"></ion-icon>
       </ion-col>
-      <ion-col offset-3>
-        <ion-item class="todo-input" color="secondary">
+      <ion-col>
+        <ion-item class="todo-input" color="primary">
           <ion-input type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput></ion-input>
         </ion-item>
       </ion-col>
