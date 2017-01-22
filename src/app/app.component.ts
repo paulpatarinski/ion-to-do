@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
 import { HomePage } from '../pages/home/home';
 
 @Component({
@@ -17,6 +16,10 @@ export class MyApp {
       StatusBar.backgroundColorByHexString("#303F9F");
       StatusBar.overlaysWebView(false)
       Splashscreen.hide();
+
+      //accessing non-ion-native plugins https://www.joshmorony.com/using-cordova-plugins-in-ionic-2-with-ionic-native/
+      if((<any>window).plugins && (<any>window).plugins.headerColor)
+        (<any>window).plugins.headerColor.tint("#3F51B5");
     });
   }
 }
