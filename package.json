@@ -8,18 +8,18 @@
     "build": "ionic-app-scripts build --dev",
     "build:prod": "ionic-app-scripts build --prod",
     "serve": "ionic-app-scripts serve --lab",
-    "deploy" : "npm run build && ionic run android",
-    "resources" : "ionic resources",
-    "publish:apk" : "npm run ionic:release:build && npm run publish:sign:apk && npm run publish:zipalign",
-    "postpublish:apk" : "npm run install:apk",
-    "ionic:release:build" : "npm run build:prod && ionic build android --release",
-    "publish:sign:apk" : "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/paulpatarinski/Desktop/privateKey/my-release-key.keystore /Users/paulpatarinski/WIP/Personal/simpleToDo/platforms/android/build/outputs/apk/android-release-unsigned.apk -storepass password alias_name",
-    "publish:zipalign" : "zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk apps/todo.apk",
-    "install:apk" : "adb install apps/todo.apk"
+    "deploy": "npm run build && ionic run android",
+    "resources": "ionic resources",
+    "publish:apk": "npm run ionic:release:build && npm run publish:sign:apk && npm run publish:zipalign",
+    "postpublish:apk": "npm run install:apk",
+    "ionic:release:build": "npm run build:prod && ionic build android --release",
+    "publish:sign:apk": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/paulpatarinski/Desktop/privateKey/my-release-key.keystore /Users/paulpatarinski/WIP/Personal/simpleToDo/platforms/android/build/outputs/apk/android-release-unsigned.apk -storepass password alias_name",
+    "publish:zipalign": "zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk apps/todo.apk",
+    "install:apk": "adb install apps/todo.apk"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js",
-    "ionic_sass" : "./scripts/config/sass.config.js"
+    "ionic_sass": "./scripts/config/sass.config.js"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
@@ -35,9 +35,10 @@
     "ionic-angular": "2.0.0-rc.5",
     "ionic-native": "2.2.11",
     "ionicons": "3.0.0",
+    "raven-js": "^3.9.1",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "0.6.26",
-    "sw-toolbox": "3.4.0"
+    "sw-toolbox": "3.4.0",
+    "zone.js": "0.6.26"
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
