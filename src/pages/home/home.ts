@@ -12,6 +12,7 @@ export class HomePage {
   todoText;
   _storage;
   _todosKey = 'todos';
+  _completeTodosKey = 'completeTodos';
 
   constructor(public navCtrl: NavController, public storage: Storage) {
     this._storage = storage;
@@ -36,17 +37,32 @@ export class HomePage {
 
     if (percent < -1.8) {
       slidingItem.close();
-      this.removeCompletedToDo(selectedToDo);
+      this.completeTodo(selectedToDo);
     }
   }
 
-  removeCompletedToDo(selectedToDo) {
+  completeTodo(selectedToDo) {
     var selectedToDoIndex = this.todos.indexOf(selectedToDo);
 
     if (selectedToDoIndex != -1) {
       this.todos.splice(selectedToDoIndex, 1);
       this.saveToDos();
+      this.addToCompletedToDos(selectedToDo);
     }
+  }
+
+  addToCompletedToDos(todo)
+  {
+    this._storage.get(this._completeTodosKey).then((completed) => {
+        if(!completed){
+          return [todo];
+        }
+
+        completed.unshift(todo);
+        return completed;
+      }).then((completed) => {
+        this._storage.set(this._completeTodosKey, completed);
+      });
   }
 
   addToDo(newToDo) {

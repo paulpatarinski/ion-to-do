@@ -3,6 +3,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HistoryPage } from '../pages/history/history';
+import { TabsPage } from '../pages/tabs/tabs';
 import { Storage } from '@ionic/storage';
 import { OnFocusDirective } from '../components/input-clear';
 import { RavenErrorHandler } from '../components/raven-error-handler';
@@ -15,6 +17,8 @@ Raven
   declarations: [
     MyApp,
     HomePage,
+    TabsPage,
+    HistoryPage,
     OnFocusDirective
   ],
   imports: [
@@ -23,7 +27,9 @@ Raven
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    HistoryPage,
+    TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: RavenErrorHandler}, Storage]
 })
