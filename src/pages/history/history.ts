@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { ToDo } from '../classes/todo';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'history.html'
 })
 export class HistoryPage {
-  completeTodos: Array<{ id: number, text: string }>;
+  groupedToDos: Array<string>;
+  groups : Array<string>;
   _storage;
   _completeTodosKey = 'completeTodos';
 
@@ -18,12 +21,34 @@ export class HistoryPage {
   loadHistory() {
     return this._storage.ready().then(() => {
       this._storage.get(this._completeTodosKey).then((completed) => {
-        this.completeTodos = completed;
+        let completedGroupedByDate =  this.groupToDosByDate(completed);
+
+        this.groupedToDos =completedGroupedByDate;
+        this.groups = completedGroupedByDate.map(this.extractGroup);
       });
     });
   }
 
+extractGroup(completedGroup){
+return completedGroup;
+}
+
   ionViewWillEnter() { // THERE IT IS!!!
     return this.loadHistory();
+  }
+
+  formatCompletedDate(todo : ToDo){
+    todo.completedFormatted = todo.completed.toDateString();
+
+    return todo;
+  }
+
+  groupToDosByDate(todos: Array<ToDo>) {
+    if(todos)
+    {
+      todos.map(this.formatCompletedDate); 
+      let groupedByDate = _.groupBy(todos, 'completedFormatted')
+      return groupedByDate;
+    }
   }
 }

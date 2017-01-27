@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { NavController, reorderArray } from 'ionic-angular';
 import { ItemSliding } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import {ToDo} from '../classes/todo';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  todos: Array<{ id: number, text: string }>;
+  todos: Array<ToDo>;
   todoText;
   _storage;
   _todosKey = 'todos';
@@ -20,10 +21,15 @@ export class HomePage {
     this._storage.ready().then(() => {
       this._storage.get(this._todosKey).then((todos) => {
         if (!todos) {
-          todos = [{
-            id : 1,
-            text : "Swipe me to the right to complete..."
-          }];
+          var defaultToDo = new ToDo();
+
+          defaultToDo.id = 1;
+          defaultToDo.text =  "Swipe me to the right to complete...";
+          defaultToDo.created = new Date();
+          defaultToDo.completed = null;
+
+          todos = new Array<ToDo>(defaultToDo);
+
           this._storage.set(this._todosKey, todos);
         }
 
@@ -32,7 +38,7 @@ export class HomePage {
     });
   }
 
-  itemDragged(slidingItem: ItemSliding, selectedToDo) {
+  itemDragged(slidingItem: ItemSliding, selectedToDo : ToDo) {
     let percent = slidingItem.getSlidingPercent();
 
     if (percent < -1.8) {
@@ -41,17 +47,19 @@ export class HomePage {
     }
   }
 
-  completeTodo(selectedToDo) {
+  completeTodo(selectedToDo : ToDo) {
     var selectedToDoIndex = this.todos.indexOf(selectedToDo);
 
     if (selectedToDoIndex != -1) {
+      selectedToDo.completed = new Date();
+
       this.todos.splice(selectedToDoIndex, 1);
       this.saveToDos();
       this.addToCompletedToDos(selectedToDo);
     }
   }
 
-  addToCompletedToDos(todo)
+  addToCompletedToDos(todo : ToDo)
   {
     this._storage.get(this._completeTodosKey).then((completed) => {
         if(!completed){
@@ -65,13 +73,16 @@ export class HomePage {
       });
   }
 
-  addToDo(newToDo) {
-    if (newToDo) {
-      this.todos.unshift({
-        id: this.todos.length + 1,
-        text: newToDo
-      });
+  addToDo(newToDoText : string) {
+    if (newToDoText) {
+      var todo = new ToDo();
+      
+      todo.id = this.todos.length + 1;
+      todo.text = newToDoText;
+      todo.created = new Date();
+      todo.completed = null;
 
+      this.todos.unshift(todo);
       this.saveToDos();
       this.todoText = "";
     }
