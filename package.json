@@ -9,7 +9,8 @@
     "build": "ionic-app-scripts build --dev",
     "build:prod": "ionic-app-scripts build --prod",
     "serve": "ionic-app-scripts serve --lab",
-    "emulate": "ionic emulate ios --livereload",
+    "emulate:ios": "ionic emulate ios --livereload",
+    "emulate:android": "ionic run android",
     "deploy": "npm run build && ionic run android",
     "resources": "ionic resources",
     "publish:apk": "npm run ionic:release:build && npm run publish:sign:apk && npm run publish:zipalign",
@@ -17,7 +18,8 @@
     "ionic:release:build": "npm run build:prod && ionic build android --release",
     "publish:sign:apk": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/paulpatarinski/Desktop/privateKey/my-release-key.keystore /Users/paulpatarinski/WIP/Personal/simpleToDo/platforms/android/build/outputs/apk/android-release-unsigned.apk -storepass password alias_name",
     "publish:zipalign": "zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk apps/todo.apk",
-    "install:apk": "adb install apps/todo.apk"
+    "install:apk": "adb install apps/todo.apk",
+    "test:android" : "cd ui_tests && npm run test:android"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js",
@@ -46,8 +48,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
-    "typescript": "2.0.9",
-    "underscore": "^1.8.3"
+    "typescript": "2.0.9"
   },
   "cordovaPlugins": [
     "cordova-plugin-statusbar",
