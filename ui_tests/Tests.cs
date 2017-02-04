@@ -26,59 +26,36 @@ namespace ui_tests
         [Test]
         public void Generate_App_Screenshots()
         {
-            app.WaitForElement(c => c.Css("#unlearn-btn"));
+            app.WaitForElement(c => c.Css("#todo-input"));
             Thread.Sleep(TimeSpan.FromSeconds(2));
             TakeScreenshot("Home Page");
 
-            if (AppInitializer.AppConfig.phone)
-                app.Tap(c => c.Css("#unlearn-btn"));
-            else
-                //This is hack for some reason Xam UI can't find the correct coordinates
-                app.TapCoordinates(379, 1000);
-
-            app.WaitForElement(c => c.Css("#random-img"));
-            TakeScreenshot("Gallery Fact 1");
-
-            app.Tap(c => c.Css("#random-img"));
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-
-            app.Tap(c => c.Css("#random-img"));
-            TakeScreenshot("Quote 1");
-
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-
-            if (AppInitializer.AppConfig.phone)
-                app.Tap(c => c.Css("#share-btn"));
-            else
-                //This is hack for some reason Xam UI can't find the correct coordinates
-                app.TapCoordinates(1000, 42);
-
-            TakeScreenshot("Share");
-
-            if (AppInitializer.AppConfig.phone)
-	            app.Tap(c => c.Marked("Cancel"));
-			else 
-            	app.Tap(c => c.Css("#random-img"));
-
-            app.Tap(c => c.Css(".back-button"));
-
-            if (AppInitializer.AppConfig.phone)
-                app.Tap(c => c.Css("#about-btn"));
-            else
-                //This is hack for some reason Xam UI can't find the correct coordinates
-                app.TapCoordinates(379, 1300);
-
+            app.EnterText(c => c.Css("#todo-input"),"Throw out the garbage");
             Thread.Sleep(TimeSpan.FromSeconds(1));
-            TakeScreenshot("About Page");
-            app.Tap(c => c.Css(".back-button"));
+            TakeScreenshot("Add to do");
+           
+            app.PressEnter();
+            app.DismissKeyboard();
+
+            app.SwipeLeftToRight(c => c.Css("#todo-item"),0.1);
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            TakeScreenshot("Swipe right to complete");
+
+            app.SwipeLeftToRight(c => c.Css("#todo-item"));
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            app.Tap(c => c.Css("#tab-t0-1"));
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            TakeScreenshot("History");
         }
 
 		private void TakeScreenshot(string screenshotTitle)
 		{
+            var plt = platform == Platform.Android ? "android" : "ios";
 			var screenshotFileInfo = app.Screenshot(screenshotTitle);
 			var device = AppInitializer.AppConfig.phone ? "phone" : "tablet";
 			var newScreenshotName = screenshotFileInfo.Name.Replace("screenshot",device);
-			var newFilePath = $"{screenshotFileInfo.Directory}/{newScreenshotName}";
+			var newFilePath = $"{screenshotFileInfo.Directory}/{plt}-{newScreenshotName}";
 			screenshotFileInfo.MoveTo(newFilePath);
 		}
     }

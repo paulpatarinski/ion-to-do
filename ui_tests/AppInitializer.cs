@@ -26,6 +26,7 @@ namespace ui_tests
                 return ConfigureApp
                     .Android
                     .ApkFile(AppConfig.apk_path)
+                    .EnableLocalScreenshots()
                     .StartApp();
             }
 

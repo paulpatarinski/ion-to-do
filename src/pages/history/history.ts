@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { ToDo } from '../classes/todo';
+import { ToDo } from '../models/todo';
 import * as _ from 'lodash';
 
 @Component({

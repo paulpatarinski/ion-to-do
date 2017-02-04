@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, reorderArray } from 'ionic-angular';
 import { ItemSliding } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import {ToDo} from '../classes/todo';
+import {ToDo} from '../models/todo';
 
 @Component({
   selector: 'page-home',

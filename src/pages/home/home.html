@@ -11,7 +11,7 @@
       </ion-col>
       <ion-col>
         <ion-item class="todo-input" color="primary">
-          <ion-input type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput onFocus></ion-input>
+          <ion-input id="todo-input" type="text" placeholder="Add a to-do..." [(ngModel)]="todoText" (keyup.enter)="addToDo(todoText)" clearInput onFocus></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -21,7 +21,7 @@
 <ion-content>
   <ion-list reorder="true" (ionItemReorder)="reorderToDos($event)">
     <ion-item-sliding #slidingItem *ngFor="let todo of todos" (ionDrag)="itemDragged(slidingItem, todo)">
-      <ion-item>
+      <ion-item id="todo-item">
         <h2 class="todo-text">{{todo.text}}</h2>
       </ion-item>
       <ion-item-options side="left">
