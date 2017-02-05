@@ -9,8 +9,8 @@ import * as _ from 'lodash';
   templateUrl: 'history.html'
 })
 export class HistoryPage {
-  groupedToDos: Array<string>;
-  groups : Array<string>;
+  groupedToDos: Array<string> = [];
+  groups : Array<string> = [];
   _storage;
   _completeTodosKey = 'completeTodos';
 
@@ -22,18 +22,13 @@ export class HistoryPage {
     return this._storage.ready().then(() => {
       this._storage.get(this._completeTodosKey).then((completed) => {
         let completedGroupedByDate =  this.groupToDosByDate(completed);
-
-        this.groupedToDos =completedGroupedByDate;
-        this.groups = completedGroupedByDate.map(this.extractGroup);
+        this.groups = Object.keys(completedGroupedByDate);
+        this.groupedToDos = completedGroupedByDate;
       });
     });
   }
 
-extractGroup(completedGroup){
-return completedGroup;
-}
-
-  ionViewWillEnter() { // THERE IT IS!!!
+  ionViewWillEnter() {
     return this.loadHistory();
   }
 

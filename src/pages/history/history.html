@@ -7,20 +7,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item-group *ngFor="let group of groupedToDos">
-      <p>test</p> 
-    </ion-item-group>
-
-  </ion-list>
-
-    <!--<ion-item-group *ngFor="let group of groupedToDos">
- 
-      <ion-item-divider light>{{group}}</ion-item-divider>
-      <ion-item *ngFor="let contact of group.contacts">{{contact}}</ion-item>-->
- 
-
-      <!--<ion-item *ngFor="let todo of completeTodos">
-        <h2 class="todo-text">{{todo.text}}</h2>
-      </ion-item>-->
+   <ion-item-group *ngFor="let groupKey of groups">
+    <ion-item-divider color="light" >{{groupKey}}</ion-item-divider>
+    <ion-item *ngFor="let todo of groupedToDos[groupKey]">
+      {{todo.text}}
+    </ion-item>
+  </ion-item-group>
 </ion-content>
