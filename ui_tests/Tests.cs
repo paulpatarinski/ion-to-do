@@ -37,7 +37,7 @@ namespace ui_tests
             app.PressEnter();
             app.DismissKeyboard();
 
-            app.SwipeLeftToRight(c => c.Css("#todo-item"),0.1);
+            app.SwipeLeftToRight(c => c.Css("#todo-item"),0.2);
             Thread.Sleep(TimeSpan.FromSeconds(2));
             TakeScreenshot("Swipe right to complete");
 

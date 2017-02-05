@@ -19,7 +19,10 @@
     "publish:sign:apk": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/paulpatarinski/Desktop/privateKey/my-release-key.keystore /Users/paulpatarinski/WIP/Personal/simpleToDo/platforms/android/build/outputs/apk/android-release-unsigned.apk -storepass password alias_name",
     "publish:zipalign": "zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk apps/todo.apk",
     "install:apk": "adb install apps/todo.apk",
-    "test:android" : "cd ui_tests && npm run test:android"
+    "test:android": "cd ui_tests && npm run test:android",
+    "screenshots": "cd ui_tests && npm run screenshots && cd .. && npm run screenshots:frame",
+    "screenshots:frame" : "cd fastlane/metadata/android/en-US/images && fastlane frameit",
+    "copy": "cd ui_tests && npm run copy"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js",
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
+    "copyfiles": "^1.2.0",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
