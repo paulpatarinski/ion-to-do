@@ -18,8 +18,10 @@
     "ionic:release:build": "npm run build:prod && ionic build android --release",
     "install:apk": "adb install apps/todo.apk",
     "test:android": "cd ui_tests && npm run test:android",
+    "prescreenshots" : "rimraf fastlane/metadata/android/en-US/images/phoneScreenshots/*.png",
     "screenshots": "cd ui_tests && npm run screenshots && cd .. && npm run screenshots:frame",
-    "screenshots:frame" : "cd fastlane/metadata/android/en-US/images && fastlane frameit"
+    "screenshots:frame" : "cd fastlane/metadata/android/en-US/images && fastlane frameit",
+    "postscreenshots" : "rimraf \"fastlane/metadata/android/en-US/images/phoneScreenshots/!(*_framed).png\""
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js",
