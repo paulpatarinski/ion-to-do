@@ -18,7 +18,7 @@ default_platform :android
 platform :android do
   desc "Compile a new build for Android"
   lane :release do |options|
-    app_android_key = 'alias_name'
+   app_android_key = 'alias_name'
     sh("npm run ionic:release:build")
     sign_apk(
       apk_path: "platforms/android/build/outputs/apk/android-release-unsigned.apk",
@@ -28,5 +28,8 @@ platform :android do
     )
     zipalign(apk_path: "#{lane_context[SharedValues::SIGNED_APK_PATH]}")
     sh("npm run screenshots")
+    supply(
+      apk: "apps/todo.apk"
+    )
   end
 end
