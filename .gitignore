@@ -41,3 +41,4 @@ TestResult.xml
 report.xml
 .env
 fastlane/release-cred
+fastlane/metadata/android/en-US/images/phoneScreenshots
