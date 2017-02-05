@@ -21,8 +21,7 @@
     "install:apk": "adb install apps/todo.apk",
     "test:android": "cd ui_tests && npm run test:android",
     "screenshots": "cd ui_tests && npm run screenshots && cd .. && npm run screenshots:frame",
-    "screenshots:frame" : "cd fastlane/metadata/android/en-US/images && fastlane frameit",
-    "copy": "cd ui_tests && npm run copy"
+    "screenshots:frame" : "cd fastlane/metadata/android/en-US/images && fastlane frameit"
   },
   "config": {
     "ionic_webpack": "./scripts/config/webpack.config.js",
