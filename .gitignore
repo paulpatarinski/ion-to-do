@@ -38,3 +38,6 @@ packages
 bin
 obj 
 TestResult.xml
+report.xml
+.env
+fastlane/release-cred
