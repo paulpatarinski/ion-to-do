@@ -1,24 +1,5 @@
 #todo-content{
-    $placeholder-color : #BDBDBD;
-
-     .todo-input
-     {
-        color: white;
-        .text-input::-moz-placeholder {
-        color: $placeholder-color;
-        }
-
-        .text-input:-ms-input-placeholder {
-        color: $placeholder-color;
-        }
-
-        .text-input::-webkit-input-placeholder {
-        text-indent: 0;
-        color: $placeholder-color;
-        }
-    }
-
-    .todo-text {
-        white-space: normal;
-    }
+ .group-date {
+     font-weight: 500;
+ }  
 }

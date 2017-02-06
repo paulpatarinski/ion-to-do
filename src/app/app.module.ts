@@ -1,5 +1,6 @@
 import * as Raven from 'raven-js';
 import { NgModule, ErrorHandler } from '@angular/core';
+import {MomentModule} from 'angular2-moment';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,7 +23,8 @@ Raven
     OnFocusDirective
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    MomentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

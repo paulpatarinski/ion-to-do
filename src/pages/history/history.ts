@@ -9,8 +9,8 @@ import * as _ from 'lodash';
   templateUrl: 'history.html'
 })
 export class HistoryPage {
-  groupedToDos: Array<string> = [];
-  groups : Array<string> = [];
+  groupedToDos: Array<string>;
+  groups : Array<string>;
   _storage;
   _completeTodosKey = 'completeTodos';
 
@@ -42,7 +42,9 @@ export class HistoryPage {
     if(todos)
     {
       todos.map(this.formatCompletedDate); 
-      let groupedByDate = _.groupBy(todos, 'completedFormatted')
+      
+      let groupedByDate = _.groupBy(todos, 'completedFormatted');
+
       return groupedByDate;
     }
   }

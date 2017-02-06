@@ -7,8 +7,10 @@
 </ion-header>
 
 <ion-content>
-   <ion-item-group *ngFor="let groupKey of groups">
-    <ion-item-divider color="light" >{{groupKey}}</ion-item-divider>
+  <ion-item-group *ngFor="let groupKey of groups">
+    <ion-item-divider color="light"><span>{{groupedToDos[groupKey].length}} todos completed </span> <span class="group-date">{{ groupKey | amCalendar : { sameDay: '[Today]',  lastDay: '[Yesterday]', lastWeek: '[Last] dddd',
+    sameElse: 'ddd, MMMM Do, YYYY'} }}</span>
+    </ion-item-divider>
     <ion-item *ngFor="let todo of groupedToDos[groupKey]">
       {{todo.text}}
     </ion-item>
